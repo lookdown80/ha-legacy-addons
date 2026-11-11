@@ -1,0 +1,43 @@
+---
+version: 9.20.1
+slug: ssh_legacy
+name: Terminal & SSH (legacy armv7)
+description: Allow logging in remotely to Home Assistant using SSH
+url: https://github.com/home-assistant/addons/tree/master/ssh
+arch:
+  - armv7
+audio: true
+hassio_api: true
+hassio_role: manager
+host_dbus: true
+image: homeassistant/{arch}-addon-ssh
+ingress: true
+init: false
+map:
+  - addons:rw
+  - all_addon_configs:rw
+  - backup:rw
+  - homeassistant_config:rw
+  - media:rw
+  - share:rw
+  - ssl:rw
+options:
+  authorized_keys: []
+  password: ""
+  apks: []
+  server:
+    tcp_forwarding: false
+panel_icon: mdi:console
+panel_title: Terminal
+ports:
+  22/tcp: null
+schema:
+  authorized_keys:
+    - str
+  password: password
+  apks:
+    - str
+  server:
+    tcp_forwarding: bool
+startup: services
+uart: true
